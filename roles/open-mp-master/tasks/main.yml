@@ -1,0 +1,4 @@
+- name: Install Hostfile
+  template:
+    src: hostfile.j2
+    dest: /home/nick/hostfile

@@ -1,0 +1,14 @@
+---
+- hosts: compute
+  name: setup mpi
+  roles:
+  - open-mpi
+- hosts: storage
+  name: setup storage server
+  roles:
+  - storage
+- hosts: master
+  name: setup master server
+  roles:
+  - open-mpi
+  - open-mp-master

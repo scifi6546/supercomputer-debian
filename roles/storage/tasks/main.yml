@@ -1,0 +1,26 @@
+- name: Install nfs
+  apt:
+    name: nfs-kernel-server
+    state: present
+  become: yes
+- name: Add export ditectory
+  file:
+    path: /home/nick/cloud
+    owner: nick
+    state: directory
+    mode: 0755
+- name: copy exports
+  template:
+    src: exports.j2
+    dest: /etc/exports
+    mode: 0644
+    owner: root
+    group: root
+  become: yes
+- name: restart nfs
+  service:
+    name: nfs-kernel-server
+    state: restarted
+  become: yes
+
+
